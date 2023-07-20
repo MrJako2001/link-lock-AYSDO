@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 
 <head>
   <!-- Metadata -->
   <meta charset="utf-8" />
-  <meta name="author" content="Jacob Strieb" />
-  <meta name="description" content="Password protect links using AES in the browser." />
+  <meta name="author" content="Jacob Strieb y MrJaco" />
+  <meta name="description" content="Protege con contraseña enlaces utilizando AES en el navegador" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.aysdo.xyz/favicon.ico">
 
   <title>Link Lock AYSDO</title>
 
@@ -34,23 +34,20 @@
   </noscript>
 
   <div class="form" style="display: none">
-    <p>Please enter the password to unlock the link.</p>
+    <p>Por favor, ingresa la contraseña para desbloquear el enlace.</p>
     <p id="hint"></p>
 
     <hr />
 
-    <label for="password">password</label>
+    <label for="password">Contraseña</label>
     <input type="password" id="password" autofocus />
-    <button id="unlockbutton">Unlock link</button>
+    <button id="unlockbutton">Desbloquear</button>
   </div>
 
   <!-- Display errors in a big red box -->
   <div class="error red-border" style="display: none">
     <p id="errortext">Error</p>
-    <button onclick="main()">Try again</button>
-    <a href="https://jstrieb.github.io/link-lock"><button>Lock a link</button></a>
-    <a href="https://jstrieb.github.io/link-lock/decrypt/" id="no-redirect" target="_blank"><button>Decrypt without redirect</button></a>
-    <a href="https://jstrieb.github.io/link-lock/hidden/" id="hidden" target="_blank"><button>Create hidden bookmark</button></a>
+    <button onclick="main()">Intentar otra vez</button>
   </div>
 </body>
 

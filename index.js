@@ -15,11 +15,11 @@ function main() {
 
     // Fail if the b64 library or API was not loaded
     if (!("b64" in window)) {
-      error("Base64 library not loaded.");
+      error("La biblioteca Base64 no ha sido cargada.");
       return;
     }
     if (!("apiVersions" in window)) {
-      error("API library not loaded.");
+      error("La biblioteca de la API no ha sido cargada.");
       return;
     }
 
@@ -29,19 +29,19 @@ function main() {
     try {
       params = JSON.parse(b64.decode(hash));
     } catch {
-      error("The link appears corrupted.");
+      error("El enlace parece estar dañado.");
       return;
     }
 
     // Check that all required parameters encoded in the URL are present
     if (!("v" in params && "e" in params)) {
-      error("The link appears corrupted. The encoded URL is missing necessary parameters.");
+      error("El enlace parece estar dañado. La URL codificada no contiene los parámetros necesarios.");
       return;
     }
 
     // Check that the version in the parameters is valid
     if (!(params["v"] in apiVersions)) {
-      error("Unsupported API version. The link may be corrupted.");
+      error("Versión de API no compatible. El enlace podría estar dañado.");
       return;
     }
 
@@ -55,7 +55,7 @@ function main() {
     let hint, password;
     if ("h" in params) {
       hint = params["h"];
-      document.querySelector("#hint").innerText = "Hint: " + hint;
+      document.querySelector("#hint").innerText = "Pista: " + hint;
     }
 
     const unlockButton = document.querySelector("#unlockbutton");
@@ -74,7 +74,7 @@ function main() {
         url = await api.decrypt(encrypted, password, salt, iv);
       } catch {
         // Password is incorrect.
-        error("Password is incorrect.");
+        error("La contraseña es incorrecta");
 
         // Set the "decrypt without redirect" URL appropriately
         document.querySelector("#no-redirect").href =
@@ -95,8 +95,8 @@ function main() {
         if (!(urlObj.protocol == "http:"
               || urlObj.protocol == "https:"
               || urlObj.protocol == "magnet:")) {
-          error(`The link uses a non-hypertext protocol, which is not allowed. `
-              + `The URL begins with "${urlObj.protocol}" and may be malicious.`);
+          error(`El enlace utiliza un protocolo no hiperTexto, lo cual no está permitido. `
+              + `La URL comienza con "${urlObj.protocol}" y podría ser maliciosa.`);
           return;
         }
 
@@ -106,7 +106,7 @@ function main() {
         // the unlocked destination. This is dangerous information leakage.
         window.location.href = url;
       } catch {
-        error("A corrupted URL was encrypted. Cannot redirect.");
+        error("Se encriptó una URL dañada. No se puede redireccionar.");
         console.log(url);
         return;
       }
