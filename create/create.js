@@ -107,7 +107,7 @@ async function onEncrypt() {
   const confirmPassword = document.querySelector("#confirm-password")
   const confirmation = confirmPassword.value;
   if (password != confirmation) {
-    confirmPassword.setCustomValidity("Passwords do not match");
+    confirmPassword.setCustomValidity("Las contraseñas no coinciden");
     confirmPassword.reportValidity();
     return;
   }
@@ -121,13 +121,13 @@ async function onEncrypt() {
 
   const encrypted = await generateFragment(url, password, hint, useRandomSalt,
       useRandomIv);
-  const output = `https://jstrieb.github.io/link-lock/#${encrypted}`;
+  const output = `https://linklock.aysdo.xyz/#${encrypted}`;
 
   document.querySelector("#output").value = output;
   highlight("output");
 
   // Adjust "Hidden Bookmark" link
-  document.querySelector("#bookmark").href = `https://jstrieb.github.io/link-lock/hidden/#${encrypted}`;
+  document.querySelector("#bookmark").href = `https://linklock.aysdo.xyz/hidden/#${encrypted}`;
 
   // Adjust "Open in New Tab" link
   document.querySelector("#open").href = output;
