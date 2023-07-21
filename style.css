@@ -1,6 +1,8 @@
 /**
  * Created by Jacob Strieb
  * May 2020
+ * Modified by MrJaco
+ * July 2023
  */
 
 
@@ -11,13 +13,32 @@
 html {
   font-family: sans-serif;
   padding: 10px;
+  font-size: 16px;
 }
 
 body {
   padding: 15px;
   display: block;
   margin: auto;
-  max-width: 66ch;
+  max-width: 50rem;
+  background-color: #1f1f1f;
+  color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  border-radius: 0.7rem;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
+}
+h1 {
+  border-bottom: .2rem solid #f1f1f1;
+  text-align: center;
+}
+
+:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 10px 0 rgba(91, 143, 211, 0.75);
+  transition: box-shadow 0.3s ease;
+}
+a {
+  color: #5ab4e1;
 }
 
 p {
@@ -34,15 +55,18 @@ ol li {
 
 button {
   padding: 11px;
-  background: rgb(95, 158, 160);
   color: white;
-  border: 0.5px solid white;
+  border: 0;
   border-radius: 5px;
   margin-top: 5px;
   margin-right: 5px;
   cursor: pointer;
-  font-weight: bold;
   white-space: nowrap;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.75);
+  background-color: #363535;
+}
+button:hover {
+  background-color: #444444;
 }
 
 label {
@@ -60,18 +84,41 @@ summary {
 input, textarea {
   padding: 10px;
   border: 0.5px solid black;
-  border-radius: 3px;
+  border-radius: 0.3rem;
   margin-bottom: 15px;
   box-sizing: border-box;
   width: 100%;
   resize: none;
   font-family: sans-serif;
   font-size: 0.9em;
+  background-color: #101010;
+  color: #f1f1f1;
 }
 
 input[type="checkbox"] {
   cursor: pointer;
-  margin-right: 0;
+  margin: 0;
+  background-color: #5ab4e1;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.3rem;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+  padding: 0.5rem;
+}
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }
 
 hr {
@@ -166,6 +213,8 @@ code {
   display: flex;
   flex-flow: row-reverse nowrap;
   justify-content: flex-end;
+  align-items: center;
+  user-select: none;
 }
 
 .advanced .labeled-input label {
@@ -183,7 +232,7 @@ code {
 
 /* Output area */
 .output input {
-  background: rgba(235, 235, 235, 1);
+  background-color: #101010;
 }
 
 .alert {
