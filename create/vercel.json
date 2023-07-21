@@ -1,6 +1,3 @@
 {
-    "rewrites": [
-      { "source": "/", "destination": "/tu_index.html" },
-      { "source": "/:path*", "destination": "/tu_index.html" }
-    ]
-  }
+    "root": "."
+}
